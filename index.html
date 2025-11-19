@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Analizador de Pseudocódigo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <h1>Analizador de Pseudocódigo — Léxico + Sintáctico + IA</h1>
+
+  <div class="app">
+    <div class="card editor">
+      <div class="toolbar">
+        <button class="btn" id="runBtn">▶ Analizar</button>
+        <button class="btn secondary" id="clearBtn">Limpiar</button>
+        <button class="btn secondary" id="sampleBtn">Ejemplo</button>
+        <div class="smallMuted" style="margin-left:auto">Objetivo: <strong>&lt; 2s</strong></div>
+      </div>
+
+      <div class="editorArea">
+        <div id="editor" class="textarea" contenteditable="true" spellcheck="false">
+x <- 5 + 3
+suma <- (x + 2) * 4
+        </div>
+
+        <div class="preview">
+          <div class="panelTitle">Sugerencias IA</div>
+          <div id="suggestions" class="list"></div>
+
+          <div style="height:12px"></div>
+
+          <div class="panelTitle">Tokens</div>
+          <div id="tokens" class="list smallMuted"></div>
+        </div>
+      </div>
+
+      <div class="flex" style="margin-top:8px">
+        <div style="flex:1">
+          <div class="panelTitle">Resultado</div>
+          <div id="result" class="report">Presiona "Analizar"</div>
+        </div>
+
+        <div style="width:240px">
+          <div class="panelTitle">Comparación</div>
+          <div class="compare card">
+            <div>
+              <div class="smallMuted">Análisis Tradicional</div>
+              <pre id="trad" class="small"></pre>
+            </div>
+            <div>
+              <div class="smallMuted">IA</div>
+              <pre id="ia" class="small"></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="rightColumn">
+
+      <div class="card">
+        <div class="panelTitle">Reporte de Calidad</div>
+        <div id="report" class="report">Sin análisis</div>
+        <button class="btn" id="downloadBtn">Descargar reporte (JSON)</button>
+      </div>
+
+      <div class="card">
+        <div class="panelTitle">Guía rápida</div>
+        <ul class="smallMuted">
+          <li>Asignación: <code>id &lt;- expr</code></li>
+          <li>Expr: números, id, paréntesis, + - * /</li>
+          <li><code>x = 7</code> generará sugerencia</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>Analizador web — HTML + CSS + JS</footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
